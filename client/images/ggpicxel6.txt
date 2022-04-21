@@ -1,0 +1,5 @@
+Khi nhắc đến những chiếc smartphone chạy Android One thì chúng ta sẽ nghĩ ngay đến chiếc Google Pixel 6 lừng danh. Mới đây đã có những thông tin về thế hệ Pixel mới nhất là Google Pixel 6. Cùng nhau tham khảo về tổng hợp những thông tin nghe đồn về chiếc Google Pixel 6 này nhé.
+Thế hệ con chip mới mẻ 
+Ngoài ra, điểm đáng chú ý của chiếc điện thoại Google này là chip xử lý do chính Google phát triển có tên mã là GS101 "Whitechapel", trong đó, GS có nghĩa là Google Silicon. Chip dùng trên Pixel 6 được sản xuất bằng công nghệ 5 nm của Samsung. Chip này sẽ chia sẻ thiết kế và kiến trúc cùng một số phần mềm với Exynos - vi xử lý do Samsung sản xuất.
+
+Với chip xử lý do chính mình phát triển, Google có lợi thế hơn khi tối ưu hóa được phần cứng và phần mềm của Pixel 6, giúp smartphone có hiệu năng tốt hơn smartphone Android khác. Việc này tương tự Apple tự sản xuất chip và hệ điều hành riêng của mình, giúp các thiết bị của hãng có lợi thế hơn về hiệu suất so với đối thủ.

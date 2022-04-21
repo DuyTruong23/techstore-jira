@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Apr 11, 2022 at 12:54 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th4 13, 2022 lúc 10:08 AM
+-- Phiên bản máy phục vụ: 10.4.21-MariaDB
+-- Phiên bản PHP: 7.4.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `techstore`
+-- Cơ sở dữ liệu: `techstore`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `banner`
+-- Cấu trúc bảng cho bảng `banner`
 --
 
 CREATE TABLE `banner` (
@@ -37,7 +37,7 @@ CREATE TABLE `banner` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `banner`
+-- Đang đổ dữ liệu cho bảng `banner`
 --
 
 INSERT INTO `banner` (`id`, `caption`, `content`, `photo`, `status`, `create_at`) VALUES
@@ -48,7 +48,7 @@ INSERT INTO `banner` (`id`, `caption`, `content`, `photo`, `status`, `create_at`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `brand`
+-- Cấu trúc bảng cho bảng `brand`
 --
 
 CREATE TABLE `brand` (
@@ -59,7 +59,7 @@ CREATE TABLE `brand` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `brand`
+-- Đang đổ dữ liệu cho bảng `brand`
 --
 
 INSERT INTO `brand` (`brand_id`, `name`, `status`, `created_at`) VALUES
@@ -70,7 +70,7 @@ INSERT INTO `brand` (`brand_id`, `name`, `status`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Cấu trúc bảng cho bảng `category`
 --
 
 CREATE TABLE `category` (
@@ -81,7 +81,7 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `category`
+-- Đang đổ dữ liệu cho bảng `category`
 --
 
 INSERT INTO `category` (`category_id`, `name`, `status`, `created_at`) VALUES
@@ -94,7 +94,7 @@ INSERT INTO `category` (`category_id`, `name`, `status`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `color`
+-- Cấu trúc bảng cho bảng `color`
 --
 
 CREATE TABLE `color` (
@@ -104,7 +104,7 @@ CREATE TABLE `color` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `color`
+-- Đang đổ dữ liệu cho bảng `color`
 --
 
 INSERT INTO `color` (`color_id`, `name`, `code`) VALUES
@@ -117,21 +117,30 @@ INSERT INTO `color` (`color_id`, `name`, `code`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comment`
+-- Cấu trúc bảng cho bảng `comment`
 --
 
 CREATE TABLE `comment` (
-  `customer_id` int(11) NOT NULL,
-  `employee_id` int(11) NOT NULL,
+  `comment_id` int(11) NOT NULL,
+  `customer_id` int(11) DEFAULT NULL,
+  `employee_id` int(11) DEFAULT NULL,
   `feedback_id` int(11) NOT NULL,
   `content` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Đang đổ dữ liệu cho bảng `comment`
+--
+
+INSERT INTO `comment` (`comment_id`, `customer_id`, `employee_id`, `feedback_id`, `content`, `created_at`) VALUES
+(1, 1, 0, 3, 'abc', '2022-04-13 09:29:56'),
+(2, 1, 0, 3, 'ok', '2022-04-13 09:34:46');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer`
+-- Cấu trúc bảng cho bảng `customer`
 --
 
 CREATE TABLE `customer` (
@@ -148,17 +157,16 @@ CREATE TABLE `customer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `customer`
+-- Đang đổ dữ liệu cho bảng `customer`
 --
 
 INSERT INTO `customer` (`customer_id`, `name`, `phone`, `birthday`, `gender`, `email`, `address`, `password`, `status`, `created_at`) VALUES
-(1, 'Gia Phuc', '0364536930', '2022-04-03 00:00:00', 1, 'a@gmail.com', '34 Hai Bà Trưng', '202cb962ac59075b964b07152d234b70', 1, '0000-00-00 00:00:00'),
-(23, 'MinhHung', '0899933868', '2000-01-01 00:00:00', 1, 'mh@gmail.com', '12 abc', 'abc', 1, '2022-04-04 00:00:00');
+(1, 'Gia Phuc', '0364536930', '2022-04-03 00:00:00', 1, 'a@gmail.com', '34 Hai Bà Trưng', '202cb962ac59075b964b07152d234b70', 1, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `employee`
+-- Cấu trúc bảng cho bảng `employee`
 --
 
 CREATE TABLE `employee` (
@@ -175,7 +183,7 @@ CREATE TABLE `employee` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `employee`
+-- Đang đổ dữ liệu cho bảng `employee`
 --
 
 INSERT INTO `employee` (`employee_id`, `name`, `gender`, `birthday`, `phone`, `email`, `password`, `status`, `role_id`, `created_at`) VALUES
@@ -185,7 +193,7 @@ INSERT INTO `employee` (`employee_id`, `name`, `gender`, `birthday`, `phone`, `e
 -- --------------------------------------------------------
 
 --
--- Table structure for table `feedback`
+-- Cấu trúc bảng cho bảng `feedback`
 --
 
 CREATE TABLE `feedback` (
@@ -197,10 +205,20 @@ CREATE TABLE `feedback` (
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Đang đổ dữ liệu cho bảng `feedback`
+--
+
+INSERT INTO `feedback` (`feedback_id`, `customer_id`, `caption`, `content`, `status`, `created_at`) VALUES
+(3, 1, 'Hài lòng', 'Trên cả tuyệt vời', 1, '2022-04-04 00:00:00'),
+(4, 1, 'Hài lòng', 'Giá cả phải chăng', 1, '0000-00-00 00:00:00'),
+(5, 1, 'Tệ', 'Kém chất lượng', 1, '0000-00-00 00:00:00'),
+(6, 1, 'Hài lòng', 'Dịch vụ tuyệt vời', 1, '0000-00-00 00:00:00');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `liked`
+-- Cấu trúc bảng cho bảng `liked`
 --
 
 CREATE TABLE `liked` (
@@ -211,7 +229,7 @@ CREATE TABLE `liked` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orderdetail`
+-- Cấu trúc bảng cho bảng `orderdetail`
 --
 
 CREATE TABLE `orderdetail` (
@@ -223,7 +241,7 @@ CREATE TABLE `orderdetail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `orderdetail`
+-- Đang đổ dữ liệu cho bảng `orderdetail`
 --
 
 INSERT INTO `orderdetail` (`orderdetail_id`, `product_id`, `orders_id`, `color_id`, `quantity`) VALUES
@@ -236,7 +254,7 @@ INSERT INTO `orderdetail` (`orderdetail_id`, `product_id`, `orders_id`, `color_i
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Cấu trúc bảng cho bảng `orders`
 --
 
 CREATE TABLE `orders` (
@@ -252,7 +270,7 @@ CREATE TABLE `orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `orders`
+-- Đang đổ dữ liệu cho bảng `orders`
 --
 
 INSERT INTO `orders` (`orders_id`, `customer_id`, `address`, `note`, `total`, `order_code`, `status`, `created_at`, `employee_id`) VALUES
@@ -264,7 +282,7 @@ INSERT INTO `orders` (`orders_id`, `customer_id`, `address`, `note`, `total`, `o
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Cấu trúc bảng cho bảng `product`
 --
 
 CREATE TABLE `product` (
@@ -275,7 +293,7 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `product`
+-- Đang đổ dữ liệu cho bảng `product`
 --
 
 INSERT INTO `product` (`product_id`, `category_id`, `brand_id`, `name`) VALUES
@@ -309,7 +327,7 @@ INSERT INTO `product` (`product_id`, `category_id`, `brand_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `role`
+-- Cấu trúc bảng cho bảng `role`
 --
 
 CREATE TABLE `role` (
@@ -318,7 +336,7 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `role`
+-- Đang đổ dữ liệu cho bảng `role`
 --
 
 INSERT INTO `role` (`role_id`, `role`) VALUES
@@ -328,7 +346,7 @@ INSERT INTO `role` (`role_id`, `role`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `storehouse`
+-- Cấu trúc bảng cho bảng `storehouse`
 --
 
 CREATE TABLE `storehouse` (
@@ -343,7 +361,7 @@ CREATE TABLE `storehouse` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `storehouse`
+-- Đang đổ dữ liệu cho bảng `storehouse`
 --
 
 INSERT INTO `storehouse` (`storehouse_id`, `product_id`, `color_id`, `price`, `quantity`, `image`, `description`, `create_at`) VALUES
@@ -375,68 +393,69 @@ INSERT INTO `storehouse` (`storehouse_id`, `product_id`, `color_id`, `price`, `q
 (26, 1, 2, 34000000, 16, '', 'Hàng like new', '2022-04-09 05:25:24');
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `banner`
+-- Chỉ mục cho bảng `banner`
 --
 ALTER TABLE `banner`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `brand`
+-- Chỉ mục cho bảng `brand`
 --
 ALTER TABLE `brand`
   ADD PRIMARY KEY (`brand_id`);
 
 --
--- Indexes for table `category`
+-- Chỉ mục cho bảng `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`category_id`);
 
 --
--- Indexes for table `color`
+-- Chỉ mục cho bảng `color`
 --
 ALTER TABLE `color`
   ADD PRIMARY KEY (`color_id`);
 
 --
--- Indexes for table `comment`
+-- Chỉ mục cho bảng `comment`
 --
 ALTER TABLE `comment`
+  ADD PRIMARY KEY (`comment_id`),
   ADD KEY `feedback_id` (`feedback_id`);
 
 --
--- Indexes for table `customer`
+-- Chỉ mục cho bảng `customer`
 --
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`customer_id`);
 
 --
--- Indexes for table `employee`
+-- Chỉ mục cho bảng `employee`
 --
 ALTER TABLE `employee`
   ADD PRIMARY KEY (`employee_id`),
   ADD KEY `role_id` (`role_id`);
 
 --
--- Indexes for table `feedback`
+-- Chỉ mục cho bảng `feedback`
 --
 ALTER TABLE `feedback`
   ADD PRIMARY KEY (`feedback_id`),
   ADD KEY `customer_id` (`customer_id`);
 
 --
--- Indexes for table `liked`
+-- Chỉ mục cho bảng `liked`
 --
 ALTER TABLE `liked`
   ADD KEY `customer_id` (`customer_id`),
   ADD KEY `feedback_id` (`feedback_id`);
 
 --
--- Indexes for table `orderdetail`
+-- Chỉ mục cho bảng `orderdetail`
 --
 ALTER TABLE `orderdetail`
   ADD PRIMARY KEY (`orderdetail_id`),
@@ -445,14 +464,15 @@ ALTER TABLE `orderdetail`
   ADD KEY `color_id` (`color_id`);
 
 --
--- Indexes for table `orders`
+-- Chỉ mục cho bảng `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`orders_id`),
-  ADD KEY `customer_id` (`customer_id`);
+  ADD KEY `customer_id` (`customer_id`),
+  ADD KEY `orders_ibfk_2` (`employee_id`);
 
 --
--- Indexes for table `product`
+-- Chỉ mục cho bảng `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`product_id`),
@@ -460,13 +480,13 @@ ALTER TABLE `product`
   ADD KEY `category_id` (`category_id`);
 
 --
--- Indexes for table `role`
+-- Chỉ mục cho bảng `role`
 --
 ALTER TABLE `role`
   ADD PRIMARY KEY (`role_id`);
 
 --
--- Indexes for table `storehouse`
+-- Chỉ mục cho bảng `storehouse`
 --
 ALTER TABLE `storehouse`
   ADD PRIMARY KEY (`storehouse_id`),
@@ -474,113 +494,119 @@ ALTER TABLE `storehouse`
   ADD KEY `product_id` (`product_id`) USING BTREE;
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `banner`
+-- AUTO_INCREMENT cho bảng `banner`
 --
 ALTER TABLE `banner`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `brand`
+-- AUTO_INCREMENT cho bảng `brand`
 --
 ALTER TABLE `brand`
   MODIFY `brand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `category`
+-- AUTO_INCREMENT cho bảng `category`
 --
 ALTER TABLE `category`
   MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `color`
+-- AUTO_INCREMENT cho bảng `color`
 --
 ALTER TABLE `color`
   MODIFY `color_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `customer`
+-- AUTO_INCREMENT cho bảng `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT cho bảng `customer`
 --
 ALTER TABLE `customer`
   MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT for table `employee`
+-- AUTO_INCREMENT cho bảng `employee`
 --
 ALTER TABLE `employee`
   MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `feedback`
+-- AUTO_INCREMENT cho bảng `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `orderdetail`
+-- AUTO_INCREMENT cho bảng `orderdetail`
 --
 ALTER TABLE `orderdetail`
   MODIFY `orderdetail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
--- AUTO_INCREMENT for table `orders`
+-- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
   MODIFY `orders_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
--- AUTO_INCREMENT for table `product`
+-- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
   MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
--- AUTO_INCREMENT for table `role`
+-- AUTO_INCREMENT cho bảng `role`
 --
 ALTER TABLE `role`
   MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `storehouse`
+-- AUTO_INCREMENT cho bảng `storehouse`
 --
 ALTER TABLE `storehouse`
   MODIFY `storehouse_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `comment`
+-- Các ràng buộc cho bảng `comment`
 --
 ALTER TABLE `comment`
   ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`feedback_id`) REFERENCES `feedback` (`feedback_id`);
 
 --
--- Constraints for table `employee`
+-- Các ràng buộc cho bảng `employee`
 --
 ALTER TABLE `employee`
   ADD CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`);
 
 --
--- Constraints for table `feedback`
+-- Các ràng buộc cho bảng `feedback`
 --
 ALTER TABLE `feedback`
   ADD CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`),
   ADD CONSTRAINT `feedback_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `orders` (`customer_id`);
 
 --
--- Constraints for table `liked`
+-- Các ràng buộc cho bảng `liked`
 --
 ALTER TABLE `liked`
   ADD CONSTRAINT `liked_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`),
   ADD CONSTRAINT `liked_ibfk_2` FOREIGN KEY (`feedback_id`) REFERENCES `feedback` (`feedback_id`);
 
 --
--- Constraints for table `orderdetail`
+-- Các ràng buộc cho bảng `orderdetail`
 --
 ALTER TABLE `orderdetail`
   ADD CONSTRAINT `orderdetail_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `storehouse` (`product_id`),
@@ -588,21 +614,21 @@ ALTER TABLE `orderdetail`
   ADD CONSTRAINT `orderdetail_ibfk_3` FOREIGN KEY (`color_id`) REFERENCES `storehouse` (`color_id`);
 
 --
--- Constraints for table `orders`
+-- Các ràng buộc cho bảng `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`),
   ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`employee_id`) REFERENCES `employee` (`employee_id`);
 
 --
--- Constraints for table `product`
+-- Các ràng buộc cho bảng `product`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`brand_id`),
   ADD CONSTRAINT `product_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`);
 
 --
--- Constraints for table `storehouse`
+-- Các ràng buộc cho bảng `storehouse`
 --
 ALTER TABLE `storehouse`
   ADD CONSTRAINT `storehouse_ibfk_1` FOREIGN KEY (`color_id`) REFERENCES `color` (`color_id`),
